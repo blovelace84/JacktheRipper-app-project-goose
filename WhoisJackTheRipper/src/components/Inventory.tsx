@@ -1,3 +1,4 @@
+import { View, Text } from "react-native";
 import { Clue } from "./types";
 
 interface Props {
@@ -5,16 +6,18 @@ interface Props {
 }
 
 export default function Inventory({ items }: Props) {
-  if (items.length === 0) return <p>Your Inventory is empty.</p>;
-
   return (
-    <div>
-      <h3>Inventory:</h3>
-      <ul>
-        {items.map((item) => (
-          <li key={item.id}>{item.name}</li>
-        ))}
-      </ul>
-    </div>
+    <View style={{ marginVertical: 8 }}>
+      {items.length === 0 ? (
+        <Text>Your inventory is empty.</Text>
+      ) : (
+        <>
+          <Text style={{ fontWeight: "bold" }}>Inventory:</Text>
+          {items.map((item) => (
+            <Text key={item.id}>- {item.name}</Text>
+          ))}
+        </>
+      )}
+    </View>
   );
 }

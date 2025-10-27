@@ -1,16 +1,10 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import GameScreen from "../src/components/GameScreen"; // Adjust path if needed
-// import "./index.css"; // Optional: global styles
+import { registerRootComponent } from "expo";
+import GameScreen from "../src/components/GameScreen";
 
-const rootElement = document.getElementById("root");
+export default function App() {
+  return <GameScreen />;
+}
 
-if (!rootElement) throw new Error("Root element not found");
-
-const root = ReactDOM.createRoot(rootElement);
-
-root.render(
-  <React.StrictMode>
-    <GameScreen />
-  </React.StrictMode>
-);
+// Register the root component for Expo
+registerRootComponent(App);

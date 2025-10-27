@@ -1,3 +1,4 @@
+import { View, Text } from "react-native";
 import { Location } from "./types";
 
 interface Props {
@@ -6,19 +7,18 @@ interface Props {
 
 export default function LocationView({ location }: Props) {
   return (
-    <div>
-      <h2>{location.name}</h2>
-      <p>{location.description}</p>
+    <View style={{ marginVertical: 8 }}>
+      <Text style={{ fontSize: 20, fontWeight: "bold" }}>{location.name}</Text>
+      <Text>{location.description}</Text>
+
       {location.clues.length > 0 && (
-        <>
-          <h3>Clues Here:</h3>
-          <ul>
-            {location.clues.map((clue) => (
-              <li key={clue.id}>{clue.name}</li>
-            ))}
-          </ul>
-        </>
+        <View style={{ marginTop: 8 }}>
+          <Text style={{ fontWeight: "bold" }}>Clues here:</Text>
+          {location.clues.map((clue) => (
+            <Text key={clue.id}>- {clue.name}</Text>
+          ))}
+        </View>
       )}
-    </div>
+    </View>
   );
 }

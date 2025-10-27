@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { View, Text, Button, ScrollView } from "react-native";
 import VoiceCommandHandler from "./VoiceCommandHandler";
 import LocationView from "./LocationView";
 import Inventory from "./Inventory";
@@ -14,12 +15,12 @@ export default function GameScreen() {
       {
         id: "bloody-knife",
         name: "Bloody Knife",
-        description: "a knife with fresh blood on it.",
+        description: "A knife with fresh blood.",
       },
       {
         id: "mysterious-letter",
         name: "Mysterious Letter",
-        description: "A letter writen in code.",
+        description: "A letter written in code.",
       },
     ],
   });
@@ -32,11 +33,17 @@ export default function GameScreen() {
   };
 
   return (
-    <div>
-      <h1>Jack the Ripper: Investigation</h1>
+    <ScrollView style={{ padding: 16 }}>
+      <Text style={{ fontSize: 24, fontWeight: "bold", marginBottom: 8 }}>
+        Jack the Ripper: Investigation
+      </Text>
+
       <LocationView location={currentLocation} />
-      <p>{message}</p>
+      <Inventory items={inventory} />
+
+      <Text style={{ marginVertical: 16 }}>{message}</Text>
+
       <VoiceCommandHandler onCommand={handleCommandResult} />
-    </div>
+    </ScrollView>
   );
 }
