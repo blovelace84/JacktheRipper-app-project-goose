@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const GOOSE_API_KEY = 'sk-pJPzyCCsQJUtT...'; // Replace with your actual API key
+const GOOSE_API_KEY = 'sk-MjGN0rGYbst9CfjG4SgqFy7UjFvXIMTcYW7rImftOijMkryi'; // Replace with your actual API key
 
 export const gooseClient = axios.create({
   baseURL: 'https://api.goose.ai/v1/engines/gpt-5-mini/completions',
