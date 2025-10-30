@@ -17,6 +17,7 @@ export type RootStackParamList = {
   EventDetail: { eventId: string };
   Map: undefined;
   Quiz: undefined;
+  About: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
