@@ -1,14 +1,13 @@
 import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
-import { createAppContainer } from "react-navigation";
+import SplashScreen from "../screens/SplashScreen";
 import HomeScreen from "../screens/HomeScreen";
 import TimelineScreen from "../screens/TimelineScreen";
 import EventDetailScreen from "../screens/EventDetailScreen";
 import MapScreen from "../screens/MapScreen";
 import QuizScreen from "../screens/QuizScreen";
-import SplashScreen from "../screens/SplashScreen";
 import AboutScreen from "../screens/AboutScreen";
-import { createStackNavigator } from "react-navigation";
 
 export type RootStackParamList = {
   Splash: undefined;
@@ -25,7 +24,10 @@ const Stack = createStackNavigator<RootStackParamList>();
 export default function AppNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Navigator
+        initialRouteName="Splash"
+        screenOptions={{ headerShown: false }}
+      >
         <Stack.Screen name="Splash" component={SplashScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Timeline" component={TimelineScreen} />
