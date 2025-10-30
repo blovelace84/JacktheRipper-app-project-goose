@@ -1,83 +1,55 @@
 // src/screens/TimelineScreen.tsx
 import React from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  StyleSheet,
-} from "react-native";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "../navigation/AppNavigator";
-import events from "../data/events.json";
-import { Event } from "../types/event";
+import { ScrollView, View, StyleSheet } from "react-native";
+import EventCard from "../components/timeline/EventCard";
+import { events } from "../data/events.json";
 
-type TimelineNavProp = StackNavigationProp<RootStackParamList, "Timeline">;
-
-interface Props {
-  navigation: TimelineNavProp;
-}
-
-export default function TimelineScreen({ navigation }: Props) {
-  const renderItem = ({ item }: { item: Event }) => (
-    <TouchableOpacity
-      style={styles.card}
-      onPress={() => navigation.navigate("EventDetail", { eventId: item.id })}
-    >
-      <Text style={styles.date}>{item.date}</Text>
-      <Text style={styles.title}>{item.title}</Text>
-      <Text numberOfLines={2} style={styles.description}>
-        {item.description}
-      </Text>
-    </TouchableOpacity>
-  );
-
+const TimelineScreen: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Timeline of Events</Text>
-      <FlatList
-        data={events}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        showsVerticalScrollIndicator={false}
-      />
-    </View>
+    <ScrollView style={styles.container}>
+      <View style={styles.timelineContainer}>
+        {events.map((event, index) => (
+          <View key={event.id} style={styles.timelineItem}>
+            {/* Connector line (except the last one) */}
+            {index !== 0 && <View style={styles.connector} />}
+            <EventCard
+              title={event.title}
+              date={event.date}
+              location={event.location}
+              description={event.description}
+              image={event.image}
+            />
+          </View>
+        ))}
+      </View>
+    </ScrollView>
   );
-}
+};
+
+export default TimelineScreen;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#0b0f1a",
-    padding: 16,
+    backgroundColor: "#000",
   },
-  header: {
-    fontSize: 24,
-    color: "#fff",
-    fontWeight: "700",
-    marginBottom: 16,
+  timelineContainer: {
+    paddingVertical: 16,
+    paddingHorizontal: 12,
+    position: "relative",
   },
-  card: {
-    backgroundColor: "#161b2e",
-    borderRadius: 12,
-    padding: 16,
-    marginBottom: 12,
-    borderWidth: 1,
-    borderColor: "#2a314a",
+  timelineItem: {
+    marginBottom: 32,
+    position: "relative",
   },
-  date: {
-    color: "#9aa4c0",
-    fontSize: 13,
-    marginBottom: 4,
-  },
-  title: {
-    color: "#fff",
-    fontSize: 18,
-    fontWeight: "600",
-  },
-  description: {
-    color: "#c7d0e6",
-    fontSize: 14,
-    marginTop: 6,
+  connector: {
+    position: "absolute",
+    top: -16,
+    left: "50%",
+    width: 2,
+    height: 32,
+    backgroundColor: "#b32d2e",
+    transform: [{ translateX: -1 }],
+    zIndex: -1,
   },
 });

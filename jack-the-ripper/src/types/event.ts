@@ -1,7 +1,8 @@
-export interface Event{
-    id: string;
-    title: string;
-    date: string;
-    description: string;
-    location: { lat: number; lng: number };
-}
+export type EventItem = {
+  id: string;
+  title: string;
+  date: string;
+  location?: string;
+  description: string;
+  image?: any;
+};
