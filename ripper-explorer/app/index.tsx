@@ -13,6 +13,8 @@ export type RootStackParamList = {
   Timeline: undefined;
   Map: undefined;
   Detail: { item: RipperEvent };
+  Gallery: undefined;
+  Quiz: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -25,6 +27,8 @@ export default function App() {
       <Stack.Screen name="Timeline" component={TimelineScreen} />
       <Stack.Screen name="Map" component={MapScreen} />
       <Stack.Screen name="Detail" component={DetailScreen} />
+      <Stack.Screen name="Gallery" component={GalleryScreen} />
+      <Stack.Screen name="Quiz" component={QuizScreen} />
     </Stack.Navigator>
   );
 }
