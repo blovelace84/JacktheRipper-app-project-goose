@@ -22,6 +22,18 @@ export default function HomeScreen({ navigation }: Props) {
       >
         <Text style={styles.buttonText}>View Map</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate("Gallery")}
+      >
+        <Text style={styles.buttonText}>View Gallery</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate("Quiz")}
+      >
+        <Text style={styles.buttonText}>Take Quiz</Text>
+      </TouchableOpacity>
     </View>
   );
 }
