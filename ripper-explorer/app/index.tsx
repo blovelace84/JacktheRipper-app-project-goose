@@ -6,6 +6,8 @@ import MapScreen from "./screens/MapScreen";
 import DetailScreen from "./screens/DetailScreen";
 import { RipperEvent } from "./types/events";
 import SplashScreen from "./screens/SplashScreen";
+import GalleryScreen from "./screens/GalleryScreen";
+import QuizScreen from "./screens/QuizScreen";
 
 export type RootStackParamList = {
   Splash: undefined;

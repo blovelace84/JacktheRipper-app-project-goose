@@ -11,7 +11,7 @@ export default function HomeScreen({ navigation }: Props) {
       <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
         <View className="p-5">
           <Text className="text-white text-3xl font-bold mb-5">
-            Jack the Ripper Explorer
+            Ripper's London
           </Text>
 
           {/* Existing buttons */}
