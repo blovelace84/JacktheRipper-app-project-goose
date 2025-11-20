@@ -1,2 +1,0 @@
-# JacktheRipper-app-project-goose
-
